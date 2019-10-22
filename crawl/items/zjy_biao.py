@@ -1,6 +1,5 @@
 from scrapy import Field,Item
 
-
 class ZhaoBiao(Item):
     #标题
     title=Field()
