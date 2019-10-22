@@ -2,7 +2,7 @@
 import scrapy
 from scrapy import Spider,Selector,Request
 from urllib.parse import urljoin
-
+from crawl.crawl.items.zjy_biao import ZhaoBiao
 
 # class ZhaobiaoSpider(scrapy.Spider):
 #     name = 'zhaobiao'
@@ -24,7 +24,7 @@ from urllib.parse import urljoin
 #
 
 class BiaoSpider(scrapy.Spider):
-    name = 'biao'
+    name = 'zjy_biao'
     allowed_domains = []
     start_urls = ['http://www.bidhome.com.cn/BiddingNoticeList.aspx']
 
@@ -44,8 +44,9 @@ class BiaoSpider(scrapy.Spider):
 
 
     def parse_eve(self,response):
+        item=ZhaoBiao()
         sel = Selector(response)
-        title = ''.join(sel.css('span#TitleLbl').extract())
+        title = ''.join(sel.css('span#TitleLbl b::text').extract())
         # tim = ''.join(sel.css('span#PublishDateLbl::text').extract())
         # endtim = ''.join(sel.css('span#EndDateLbl::text').extract())
         # addre = ''.join(sel.css('span#RegionLbl::text').extract())
