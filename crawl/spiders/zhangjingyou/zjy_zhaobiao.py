@@ -4,7 +4,7 @@ from urllib.parse import urljoin
 from crawl.items.lly_biao import ZhaobiaoItem
 
 
-class BiaoSpider(scrapy.Spider):
+class BiaoSpidera(scrapy.Spider):
     name = 'zjy_biao'
     allowed_domains = []
     start_urls = ['http://www.shenhuabidding.com.cn/bidweb/001/001002/1.html']
