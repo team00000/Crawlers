@@ -64,9 +64,16 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'crawl.pipelines.CrawlPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   'crawl.pipelines.CrawlPipeline': 300,
+}
+MONGO_HOST = "127.0.0.1"  # 主机IP
+MONGO_PORT = 27017  # 端口号
+MONGO_DB = "中国招标网"  # 库名
+MONGO_COLL = "招标榜单"  # collection名
+
+# MONGO_USER = "zhangsan"
+# MONGO_PSW = "123456"
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

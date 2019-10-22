@@ -1,4 +1,4 @@
-from scrapy import Field,Item
+from scrapy import Field, Item
 
 class ZhaoBiao(Item):
     #标题
