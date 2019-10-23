@@ -22,16 +22,22 @@ class BiaoSpider(scrapy.Spider):
         url = sel.xpath('//*[@class="fl w655"]/div/ul/li/div/a/@href').extract()
         for link in url:
             yield Request(url=link,callback=self.parse_every)
-        # weiye = sel.xpath('//div[@class="pageNum"]/a[contains(text(),"尾页")]/@href').re(r'page=(\d+)')[0]
-        # wei = int(weiye)
-        # for i in range(wei):
+
+
+        weiye = sel.xpath('//div[@class="pageNum"]/a[contains(text(),"尾页")]/@href').re(r'page=(\d+)')[0]    #最后页码
+        wei = int(weiye)
+        last_url = sel.css('div.pageNum a::attr(href)').extract()
+        page_num = re.findall('page=(\d+)', last_url)[0]       #当前页码
+        pag_nu = int(page_num)
+        if wei != pag_nu:
+            pag_nu += 1
+            next_p = re.sub('page=(\d+)', 'page=' + str(pag_nu), last_url)
+            print(next_p)
 
 
 
         # 翻页
-
-
-        last_url = sel.css('div.pageNum a::attr(href)').extract()
+        # last_url = sel.css('div.pageNum a::attr(href)').extract()
         # page_num = re.findall('page=(\d+)', last_url)[0]  # 取到上面网址的pgnum的值（str）
         # next_page = int(page_num) + 1  # 转为int   递加
         # next_p = re.sub('page=(\d+)', 'page=' + str(next_page), last_url)  # 新数字替换掉之前的数字
@@ -48,11 +54,11 @@ class BiaoSpider(scrapy.Spider):
         address = ''.join(sel.css('div.msg div span::text').extract())
         bianji = ''.join(sel.css('div.msg div::text').re('编辑：([\u4e00-\u9fa5]+)'))
         every = ''.join(sel.css('div.content p ::text').extract())
-        print(title)
-        print(tim)
-        print(address)
-        print(bianji)
-        print(every)
+        # print(title)
+        # print(tim)
+        # print(address)
+        # print(bianji)
+        # print(every)
 
     #
     #

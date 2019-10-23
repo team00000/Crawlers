@@ -1,3 +1,4 @@
 from scrapy import cmdline
-cmdline.execute('scrapy crawl shian --nolog'.split())
-# "http://www.cfsn.cn/front/web/site.hangye?hyid=1"
+# cmdline.execute('scrapy crawl shian --nolog'.split())
+cmdline.execute('scrapy crawl maidanglao --nolog'.split())
+# cmdline.execute('scrapy crawl shian'.split())
