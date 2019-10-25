@@ -6,6 +6,10 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from scrapy.utils.httpobj import urlparse_cached
+import redis, base64, requests
+username = '13603217363'
+password = '7enc036o'
 
 
 class CrawlSpiderMiddleware(object):
@@ -61,6 +65,24 @@ class CrawlDownloaderMiddleware(object):
     # scrapy acts as if the downloader middleware does not modify the
     # passed objects.
 
+    def __init__(self):
+        self.proxies_list = []
+
+    def get_proxy(self, request):
+        parsed = urlparse_cached(request)
+        scheme = parsed.scheme
+        if not self.proxies_list:
+            self.proxies_list = self.get_proxies()
+        ip = self.proxies_list[0]
+        self.proxies_list = self.proxies_list[1:]+self.proxies_list[:1]
+        return '%s://%s' % (scheme, ip)
+
+    def get_proxies(self):
+        result = requests.get('')
+        data = result.json().get('data')
+        url_list = data['proxy_list']
+        return url_list
+
     @classmethod
     def from_crawler(cls, crawler):
         # This method is used by Scrapy to create your spiders.
@@ -71,7 +93,11 @@ class CrawlDownloaderMiddleware(object):
     def process_request(self, request, spider):
         # Called for each request that goes through the downloader
         # middleware.
-
+        auth = "Basic %s" % (base64.b64encode(('%s:%s' % (username, password)).encode('utf-8'))).decode('utf-8')
+        request.headers['Proxy-Authorization'] = auth
+        proxy_url = self.get_proxy(request)
+        request.meta['proxy'] = proxy_url
+        print(request.url)
         # Must either:
         # - return None: continue processing this request
         # - or return a Response object

@@ -19,7 +19,7 @@ NEWSPIDER_MODULE = 'crawl.spiders'
 #USER_AGENT = 'crawl (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -64,9 +64,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'crawl.pipelines.CrawlPipeline': 300,
-}
+# ITEM_PIPELINES = {
+#    'crawl.pipelines.CrawlPipeline': 300,
+# }
 MONGO_HOST = "127.0.0.1"  # 主机IP
 MONGO_PORT = 27017  # 端口号
 MONGO_DB = "中国招标网"  # 库名
