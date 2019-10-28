@@ -69,8 +69,8 @@ ROBOTSTXT_OBEY = False
 # }
 MONGO_HOST = "127.0.0.1"  # 主机IP
 MONGO_PORT = 27017  # 端口号
-MONGO_DB = "news3D"  # 库名
-MONGO_COLL = "news10.26"  # collection名
+MONGO_DB = "36KR"  # 库名
+MONGO_COLL = "36KR_10.28"  # collection名
 
 # MONGO_USER = "zhangsan"
 # MONGO_PSW = "123456"

@@ -6,37 +6,21 @@ import json
 class KRspider(Spider):
     name = '36KR'
     start_urls = [
-        'https://36kr.com/pp/api/aggregation-entity?type=web_latest_article&b_id=70274&per_page=30'
+        'https://36kr.com/pp/api/aggregation-entity?type=web_latest_article&per_page=30'
     ]
-
     def parse(self, response):
-        result = json.loads(response)
-        # for res in result['data']:
-        #     res
-        pass
+        result = json.loads(response.text)
+        for i in result['data']['items']:
+            entity_id = i.get('entity_id')
+            detauil_url = urljoin('https://36kr.com/p/', str(entity_id))
+            yield Request(url=detauil_url, callback=self.content)
 
 
-
-
-
-
-
-
-
-    # def parse(self, response):
-    #     sel = Selector(response)
-    #     detauil_urls = sel.xpath('//a[@class="article-item-title weight-bold"]/@href').extract()
-    #     if len(detauil_urls) <= 40:
-    #         for detauil_url in detauil_urls:
-    #             detauil_url = urljoin(response.url, detauil_url)
-    #             yield Request(url=detauil_url, callback=self.parse_content)
-    #
-    # def parse_content(self, response):
-    #     item = wsl_36KR()
-    #     sel = Selector(response)
-    #     item['title'] = sel.css('h1::text').extract_first()
-    #     item['author'] = sel.xpath('//a[@class="title-icon-item item-a"]/text()').extract_first()
-    #     text = sel.xpath('//div[@class="common-width content articleDetailContent kr-rich-text-wrapper"]//p/text()').extract()
-    #     item['text'] = ''.join(text).strip()
-    #     item['time'] = sel.xpath('//span[@class="title-icon-item item-time"]/text()').re(r'\d+\w+')
-    #     print(item['title'])
+    def content(self, response):
+        sel = Selector(response)
+        item = wsl_36KR()
+        item['title'] = sel.css('h1::text').extract_first()
+        item['author'] = sel.xpath('//div[@class="article-title-icon common-width margin-bottom-40"]/a/text()').extract_first()
+        item['text'] = ''.join(sel.xpath('//p//text()').extract()).strip()
+        item['time'] = ''.join(sel.xpath('//span[@class="title-icon-item item-time"]/text()').re(r'\d+\w+'))
+        yield item
