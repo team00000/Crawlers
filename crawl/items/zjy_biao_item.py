@@ -1,4 +1,4 @@
-from scrapy import Field,Item
+from scrapy import Field, Item
 
 class ZhaoBiao(Item):
     #标题
@@ -9,6 +9,7 @@ class ZhaoBiao(Item):
     end_time=Field()
     #地址
     dizhi=Field()
+    content=Field()
 
 
 
