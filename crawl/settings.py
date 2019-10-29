@@ -14,6 +14,25 @@ BOT_NAME = 'crawl'
 SPIDER_MODULES = ['crawl.spiders']
 NEWSPIDER_MODULE = 'crawl.spiders'
 
+#region scrapy-redis
+
+# Enables scheduling storing requests queue in redis.
+SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+
+# Ensure all spiders share same duplicates filter through redis.
+
+DUPEFILTER_CLASS = 'crawl.utils.dupefilter.RFPDupeFilter'#"scrapy_redis.dupefilter.RFPDupeFilter"
+
+# REDIS_HOST = '127.0.0.1'
+# REDIS_PORT = 6379
+SCHEDULER_PERSIST = True
+ #Requests的调度策略，默认优先级队列
+SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.PriorityQueue'
+# Specify the full Redis URL for connecting (optional).
+# If set, this takes precedence over the REDIS_HOST and REDIS_PORT settings.
+REDIS_URL = 'redis://127.0.0.1:6379'
+#endregion
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'crawl (+http://www.yourdomain.com)'

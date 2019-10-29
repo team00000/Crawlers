@@ -102,16 +102,16 @@ class CrawlDownloaderMiddleware(object):
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
         # request.headers["Proxy-Authorization"]='Basic ' +
-        auth = "Basic %s" % (base64.b64encode(('%s:%s' % (username, password)).encode('utf-8'))).decode('utf-8')
-        # request.headers['Proxy-Authorization'] = auth #b'Basic ' + b'MTM2MDMyMTczNjNAMTYzLmNvbToxMjMxMjNh'
-        request.headers['Proxy-Authorization'] = auth
-        # proxy_url =
-        # request.meta['proxy'] = proxy_url  # 设置代理
-        proxy_url =  self.get_proxy(request)
-        request.meta['proxy'] =proxy_url
-        # headers = {: }
-
-        print(request.url)
+        # auth = "Basic %s" % (base64.b64encode(('%s:%s' % (username, password)).encode('utf-8'))).decode('utf-8')
+        # # request.headers['Proxy-Authorization'] = auth #b'Basic ' + b'MTM2MDMyMTczNjNAMTYzLmNvbToxMjMxMjNh'
+        # request.headers['Proxy-Authorization'] = auth
+        # # proxy_url =
+        # # request.meta['proxy'] = proxy_url  # 设置代理
+        # proxy_url =  self.get_proxy(request)
+        # request.meta['proxy'] =proxy_url
+        # # headers = {: }
+        #
+        # print(request.url)
         return None
 
     def process_response(self, request, response, spider):
