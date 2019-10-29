@@ -28,7 +28,10 @@ class BiaoSpider(scrapy.Spider):
             user = pos['user']
             name = user['name']
             print(name)
-            db.insert({'title':title,'time':tim,'every':eve,'name':name})
+            for i in db.find({'title':title,'time':tim,'every':eve,'name':name}):
+                break
+            else:
+                db.insert({'title':title,'time':tim,'every':eve,'name':name})
 
 
 

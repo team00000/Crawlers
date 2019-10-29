@@ -24,7 +24,7 @@ class BiaoSpider(scrapy.Spider):
             # for keyword in kword:
             #     print(keyword)
             url = ''.join(i.css('div.one_l_con_tit a::attr(href)').extract())
-            # print(url)
+            print(url)
             yield Request(url=url,callback=self.parse_every)
         # latest_url = response.xpath('//div[@class="p_bar"]/a[contains(text(),"尾页")]/@href').extract_first()
         # next_url = response.xpath('//div[@class="p_bar"]/a[contains(text(),"下页")]/@href').extract_first()
@@ -34,11 +34,11 @@ class BiaoSpider(scrapy.Spider):
 
     def parse_every(self,response):
         sel = Selector(response)
-        zuo = ''.join(sel.css('div#Content p::text').extract())
-        print(zuo)
-        # latest_url = response.xpath('//div[@class="p_bar"]/a[contains(text(),"尾页")]/@href').extract_first()
-        next_url = response.xpath('//div[@class="page_fenye"]/span[@id="after_this_page"]/a[contains(text(),"下一页")]/@href').extract_first()
-        if next_url:
-            next_url = urljoin(response.url, next_url)
-            yield Request(url=next_url, callback=self.parse_every)
+        # zuo = ''.join(sel.css('div#Content p::text').extract())
+        # print(zuo)
+        # # latest_url = response.xpath('//div[@class="p_bar"]/a[contains(text(),"尾页")]/@href').extract_first()
+        # next_url = response.xpath('//div[@class="page_fenye"]/span[@id="after_this_page"]/a[contains(text(),"下一页")]/@href').extract_first()
+        # if next_url:
+        #     next_url = urljoin(response.url, next_url)
+        #     yield Request(url=next_url, callback=self.parse_every)
 
