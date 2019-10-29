@@ -9,6 +9,7 @@ class ZhaoBiao(Item):
     end_time=Field()
     #地址
     dizhi=Field()
+    content=Field()
 
 
 
