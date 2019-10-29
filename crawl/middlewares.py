@@ -91,7 +91,6 @@ class CrawlDownloaderMiddleware(object):
         return s
 
     def process_request(self, request, spider):
-
         # Called for each request that goes through the downloader
         # middleware.
 
@@ -141,6 +140,10 @@ class CrawlDownloaderMiddleware(object):
         #     print("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR")
         #     self.url_list.remove(response.url)
 
+        # Must either;
+        # - return a Response object
+        # - return a Request object
+        # - or raise IgnoreRequest
         return response
 
     def process_exception(self, request, exception, spider):
