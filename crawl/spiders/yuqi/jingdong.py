@@ -2,10 +2,10 @@ import scrapy
 import  re
 import logging
 from scrapy.http import Request
-from scrapy_redis.spiders import RedisCrawlSpider#用于进行分布式部署
+from scrapy_redis.spiders import RedisCrawlSpider
 from scrapy.spiders import Rule,CrawlSpider
-from scrapy.linkextractors import LinkExtractor#crawlspider中专门用于提取相关连接的工具
-logger=logging.getLogger('jd')#日志输出,warning,不打印没有返回值
+from scrapy.linkextractors import LinkExtractor
+
 
 class JingdongSpider(RedisCrawlSpider):
     name = 'jingdong'
