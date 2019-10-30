@@ -6,7 +6,7 @@
 # https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
-import requests
+# import requests
 from scrapy.utils.httpobj import urlparse_cached
 from scrapy import Request
 import base64
