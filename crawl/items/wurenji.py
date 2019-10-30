@@ -1,8 +1,3 @@
-#news item
 from scrapy import Item,Field
-
-
-
-class NewsItem(Item):
+class WuRenJiItem(Item):
     title = Field()
-
