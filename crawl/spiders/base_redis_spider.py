@@ -6,8 +6,6 @@ from scrapy.exceptions import DontCloseSpider
 class BaseRredis(RedisCrawlSpider):
     @classmethod
     def from_crawler(self, crawler, *args, **kwargs):
-        self.idle_number = 0
-        self.idle_list = []
         self.idle_count = 0
         spider = super(BaseRredis, self).from_crawler(crawler, *args, **kwargs)
         crawler.signals.connect(spider.spider_opened, signal=signals.spider_opened)
@@ -26,6 +24,7 @@ class BaseRredis(RedisCrawlSpider):
         print("test0000000000000000000000:{}".format(self.idle_count))
         if self.idle_count < 10:
             raise DontCloseSpider
+
 
     def close(spider, reason):
         print("##################close #################")

@@ -1,5 +1,7 @@
 from crawl.spiders.base_redis_spider import BaseRredis
+from scrapy_redis.spiders import RedisCrawlSpider
 from scrapy.selector import Selector
+from scrapy.spiders import CrawlSpider
 import logging
 import time
 from scrapy import signals,Request
@@ -18,7 +20,7 @@ class baseBaidu(BaseRredis):
     ]
     default_page = 0
     custom_settings = {
-        "SCHEDULER_DUPEFILTER_KEY":'news'
+        "SCHEDULER_DUPEFILTER_KEY":'{}'.format(name)
     }
 
 
