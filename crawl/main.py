@@ -6,7 +6,8 @@ from scrapy import cmdline
 # cmdline.execute('scrapy crawl 3Dhu --nolog'.split())
 # cmdline.execute('scrapy crawl shian'.split())
 # cmdline.execute('scrapy crawl shiantwo --nolog'.split())
-cmdline.execute('scrapy crawl fubusi --nolog'.split())
+# cmdline.execute('scrapy crawl fubusi --nolog'.split())
+cmdline.execute('scrapy crawl lunwen --nolog'.split())
 # sel = Selector(response)
 #         ul = sel.css('ul.assort_ul')
 #         for i in ul:
