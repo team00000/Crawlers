@@ -17,20 +17,22 @@ NEWSPIDER_MODULE = 'crawl.spiders'
 #region scrapy-redis
 
 # Enables scheduling storing requests queue in redis.
-SCHEDULER = "scrapy_redis.scheduler.Scheduler"
+# from scrapy_redis.scheduler import Scheduler
+# SCHEDULER = "scrapy_redis.scheduler.Scheduler"
 
 # Ensure all spiders share same duplicates filter through redis.
-
-DUPEFILTER_CLASS = 'crawl.utils.dupefilter.RFPDupeFilter'#"scrapy_redis.dupefilter.RFPDupeFilter"
+# from crawl.utils.dupefilter import RFPDupeFilter
+# DUPEFILTER_CLASS = 'crawl.utils.dupefilter.RFPDupeFilter'#"scrapy_redis.dupefilter.RFPDupeFilter"
 
 # REDIS_HOST = '127.0.0.1'
 # REDIS_PORT = 6379
-SCHEDULER_PERSIST = True
+# SCHEDULER_PERSIST = True
  #Requests的调度策略，默认优先级队列
-SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.PriorityQueue'
+ # from scrapy_redis.queue import PriorityQueue
+# SCHEDULER_QUEUE_CLASS = 'scrapy_redis.queue.PriorityQueue'
 # Specify the full Redis URL for connecting (optional).
 # If set, this takes precedence over the REDIS_HOST and REDIS_PORT settings.
-REDIS_URL = 'redis://127.0.0.1:6379'
+# REDIS_URL = 'redis://127.0.0.1:6379'
 #endregion
 
 
@@ -71,9 +73,9 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-DOWNLOADER_MIDDLEWARES = {
-   'crawl.middlewares.CrawlDownloaderMiddleware': 543,
-}
+# DOWNLOADER_MIDDLEWARES = {
+#    'crawl.middlewares.CrawlDownloaderMiddleware': 543,
+# }
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -86,11 +88,11 @@ DOWNLOADER_MIDDLEWARES = {
 # ITEM_PIPELINES = {
 #    'crawl.pipelines.CrawlPipeline': 300,
 # }
+
 MONGO_HOST = "127.0.0.1"  # 主机IP
 MONGO_PORT = 27017  # 端口号
-MONGO_DB = "36KR"  # 库名
-MONGO_COLL = "36KR_10.28"  # collection名
-
+MONGO_DB = "王者荣耀skin"  # 库名
+MONGO_COLL = "skin_2019.10.31"  # 表名
 # MONGO_USER = "zhangsan"
 # MONGO_PSW = "123456"
 
