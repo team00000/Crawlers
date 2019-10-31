@@ -1,7 +1,7 @@
 from scrapy.spiders.crawl import Rule,CrawlSpider,Request
 from scrapy.linkextractors import LinkExtractor
 from scrapy import Selector
-from crawl.crawl.items.News import NewsItem
+from crawl.items.News import NewsItem
 
 from scrapy.loader import ItemLoader
 
