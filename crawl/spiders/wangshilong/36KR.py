@@ -7,7 +7,7 @@ import json
 class KRspider(Spider):
     name = '36KR'
     start_urls = [
-        'https://36kr.co m/pp/api/aggregation-entity?type=web_latest_article&per_page=30'
+        'https://36kr.com/pp/api/aggregation-entity?type=web_latest_article&per_page=30'
     ]
     # 自己设置header头
     custom_settings = {
